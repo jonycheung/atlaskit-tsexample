@@ -1,12 +1,18 @@
+//https://atlaskit.atlassian.com/packages/core/navigation-next/docs/composing-your-navigation
+
 import React from "react";
 import { LayoutManager, NavigationProvider } from "@atlaskit/navigation-next";
+import GlobalNavigation from "@atlaskit/global-navigation";
+import AtlassianIcon from "@atlaskit/logo/dist/esm/AtlassianLogo/Icon";
 
-//https://atlaskit.atlassian.com/packages/core/navigation-next/docs/composing-your-navigation
+const MyGlobalNavigation = () => (
+  <GlobalNavigation productIcon={AtlassianIcon} onProductClick={() => {}} />
+);
 
 export default () => (
   <NavigationProvider>
     <LayoutManager
-      globalNavigation={() => null}
+      globalNavigation={MyGlobalNavigation}
       productNavigation={() => null}
       containerNavigation={() => null}
     >
