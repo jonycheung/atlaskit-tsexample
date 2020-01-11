@@ -1,19 +1,53 @@
 //https://atlaskit.atlassian.com/packages/core/navigation-next/docs/composing-your-navigation
 
-import React from "react";
-import { LayoutManager, NavigationProvider } from "@atlaskit/navigation-next";
+import React, { Fragment } from "react";
+import {
+  GroupHeading,
+  HeaderSection,
+  Item,
+  LayoutManager,
+  MenuSection,
+  NavigationProvider,
+  Separator,
+  Wordmark
+} from "@atlaskit/navigation-next";
+
 import GlobalNavigation from "@atlaskit/global-navigation";
-import AtlassianIcon from "@atlaskit/logo/dist/esm/AtlassianLogo/Icon";
+import { AtlassianIcon, AtlassianWordmark } from "@atlaskit/logo";
 
 const MyGlobalNavigation = () => (
   <GlobalNavigation productIcon={AtlassianIcon} onProductClick={() => {}} />
+);
+
+const MyProductNavigation = () => (
+  <Fragment>
+    <HeaderSection>
+      {({ className }) => (
+        <div className={className}>
+          <Wordmark wordmark={AtlassianWordmark} />
+        </div>
+      )}
+    </HeaderSection>
+    <MenuSection>
+      {({ className }) => (
+        <div className={className}>
+          <Item text="Dashboard" />
+          <Item text="Things" />
+          <Item text="Settings" />
+          <Separator />
+          <GroupHeading>Add-ons</GroupHeading>
+          <Item text="My plugin" />
+        </div>
+      )}
+    </MenuSection>
+  </Fragment>
 );
 
 export default () => (
   <NavigationProvider>
     <LayoutManager
       globalNavigation={MyGlobalNavigation}
-      productNavigation={() => null}
+      productNavigation={MyProductNavigation}
       containerNavigation={() => null}
     >
       <div>Page content goes here.</div>
