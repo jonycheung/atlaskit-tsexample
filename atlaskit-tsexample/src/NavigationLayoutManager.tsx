@@ -18,18 +18,21 @@ import { AtlassianIcon, AtlassianWordmark } from "@atlaskit/logo";
 const MyGlobalNavigation = () => (
   <GlobalNavigation productIcon={AtlassianIcon} onProductClick={() => {}} />
 );
+interface ClassObjectInterface {
+  className: string;
+}
 
 const MyProductNavigation = () => (
   <Fragment>
     <HeaderSection>
-      {({ className }) => (
+      {({ className }:ClassObjectInterface) => (
         <div className={className}>
           <Wordmark wordmark={AtlassianWordmark} />
         </div>
       )}
     </HeaderSection>
     <MenuSection>
-      {({ className }) => (
+      {({ className }:ClassObjectInterface) => (
         <div className={className}>
           <Item text="Dashboard" />
           <Item text="Things" />
